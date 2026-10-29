@@ -18,8 +18,8 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <Navbar />
-        {children}
+        <Header />
+        {children}npm install
       </body>
     </html>
   );
