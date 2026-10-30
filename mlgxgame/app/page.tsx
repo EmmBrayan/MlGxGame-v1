@@ -1,5 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
+import PlayNow from "@/components/PlayNow";
+import ContinuePlaying from "@/components/ContinuePlaying";
 
 const categories = [
   { label: "Jeux en ligne", href: "/online" },
@@ -57,6 +59,8 @@ export default function Home() {
           ))}
         </div>
       </section>
+      <PlayNow />
+      <ContinuePlaying />
     </main>
   );
 }
