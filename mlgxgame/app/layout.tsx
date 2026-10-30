@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
-        {children}npm install
+        {children}
       </body>
     </html>
   );

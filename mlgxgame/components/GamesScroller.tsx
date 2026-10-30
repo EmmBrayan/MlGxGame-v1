@@ -88,9 +88,9 @@ export default function GamesScroller({ games }: { games: Game[] }) {
                 games.map((g) => (
                     <div key={`${copy}-${g.slug}`} className="h-full shrink-0 pr-2">
                         <Link
-                            href={`/jeux/${g.slug}`}
-                            className="flex h-full w-24 flex-col overflow-hidden rounded-xl border border-border bg-background transition hover:border-accent sm:w-32"
-                        >
+                            href={`/jeux/${g.slug}`}0
+                            className="flex h-full w-24 flex-col overflow-hidden rounded-xl border border-border bg-background transition hover:border-accent sm:w-36 lg:w-52"
+                            >
                             <div className="flex flex-1 items-center justify-center bg-accent/10 text-2xl font-bold text-accent/70">
                                 {g.name.charAt(0)}
                             </div>
