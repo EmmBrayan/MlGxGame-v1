@@ -8,7 +8,7 @@ export function pickGames(
   count: number,
   random: () => number,
 ): Suggestion[] {
-  const playable = all.filter((g) => g.type === "navigateur");
+  const playable = all;
   const bySlug = new Map(playable.map((g) => [g.slug, g]));
   const picks: Suggestion[] = [];
   const used = new Set<string>();
