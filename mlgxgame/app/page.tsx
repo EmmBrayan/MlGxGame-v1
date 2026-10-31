@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import PlayNow from "@/components/PlayNow";
-import ContinuePlaying from "@/components/ContinuePlaying";
+import DownloadGamesCard from "@/components/DownloadGamesCard";
 
 const categories = [
   { label: "Jeux en ligne", href: "/online" },
@@ -60,7 +60,7 @@ export default function Home() {
         </div>
       </section>
       <PlayNow />
-      <ContinuePlaying />
+      <DownloadGamesCard />
     </main>
   );
 }

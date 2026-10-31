@@ -8,97 +8,97 @@ const SPEED = 40; // vitesse en pixels par seconde
 const RESUME_DELAY = 2000; // pause (ms) après une interaction
 
 export default function GamesScroller({ games }: { games: Game[] }) {
-  const ref = useRef<HTMLDivElement>(null);
+    const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const el = ref.current;
-            if (!el) return;
+        if (!el) return;
 
-                // On démarre sur la copie du milieu (il y en a 3)
-                    el.scrollLeft = el.scrollWidth / 3;
-                        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        // On démarre sur la copie du milieu (il y en a 3)
+        el.scrollLeft = el.scrollWidth / 3;
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-                            let pos = el.scrollLeft;
-                                let last = performance.now();
-                                    let pausedUntil = 0;
-                                        let holding = false;
-                                            let frame = 0;
+        let pos = el.scrollLeft;
+        let last = performance.now();
+        let pausedUntil = 0;
+        let holding = false;
+        let frame = 0;
 
-                                                const hold = () => {
-                                                      holding = true;
-                                                          };
-                                                              const release = () => {
-                                                                    holding = false;
-                                                                          pausedUntil = performance.now() + RESUME_DELAY;
-                                                                              };
+        const hold = () => {
+            holding = true;
+        };
+        const release = () => {
+            holding = false;
+            pausedUntil = performance.now() + RESUME_DELAY;
+        };
 
-                                                                                  el.addEventListener("touchstart", hold, { passive: true });
-                                                                                      el.addEventListener("touchend", release);
-                                                                                          el.addEventListener("touchcancel", release);
-                                                                                              el.addEventListener("mouseenter", hold);
-                                                                                                  el.addEventListener("mouseleave", release);
+        el.addEventListener("touchstart", hold, { passive: true });
+        el.addEventListener("touchend", release);
+        el.addEventListener("touchcancel", release);
+        el.addEventListener("mouseenter", hold);
+        el.addEventListener("mouseleave", release);
 
-                                                                                                      const tick = (now: number) => {
-                                                                                                            const dt = Math.min(now - last, 64);
-                                                                                                                  last = now;
+        const tick = (now: number) => {
+            const dt = Math.min(now - last, 64);
+            last = now;
 
-                                                                                                                        // Boucle infinie : on saute d'une copie, c'est invisible
-                                                                                                                              const w = el.scrollWidth / 3;
-                                                                                                                                    let current = el.scrollLeft;
-                                                                                                                                          if (w > 0 && current < w) {
-                                                                                                                                                  current += w;
-                                                                                                                                                          pos += w;
-                                                                                                                                                                  el.scrollLeft = current;
-                                                                                                                                                                        } else if (w > 0 && current >= 2 * w) {
-                                                                                                                                                                                current -= w;
-                                                                                                                                                                                        pos -= w;
-                                                                                                                                                                                                el.scrollLeft = current;
-                                                                                                                                                                                                      }
+            // Boucle infinie : on saute d'une copie, c'est invisible
+            const w = el.scrollWidth / 3;
+            let current = el.scrollLeft;
+            if (w > 0 && current < w) {
+                current += w;
+                pos += w;
+                el.scrollLeft = current;
+            } else if (w > 0 && current >= 2 * w) {
+                current -= w;
+                pos -= w;
+                el.scrollLeft = current;
+            }
 
-                                                                                                                                                                                                            if (holding || now < pausedUntil) {
-                                                                                                                                                                                                                    pos = current; // on suit l'utilisateur
-                                                                                                                                                                                                                          } else if (Math.abs(current - pos) > 2) {
-                                                                                                                                                                                                                                  pos = current; // il a fait défiler (élan du doigt, molette)
-                                                                                                                                                                                                                                          pausedUntil = now + RESUME_DELAY;
-                                                                                                                                                                                                                                                } else {
-                                                                                                                                                                                                                                                        pos += (SPEED * dt) / 1000; // défilement automatique
-                                                                                                                                                                                                                                                                el.scrollLeft = pos;
-                                                                                                                                                                                                                                                                      }
+            if (holding || now < pausedUntil) {
+                pos = current; // on suit l'utilisateur
+            } else if (Math.abs(current - pos) > 2) {
+                pos = current; // il a fait défiler (élan du doigt, molette)
+                pausedUntil = now + RESUME_DELAY;
+            } else {
+                pos += (SPEED * dt) / 1000; // défilement automatique
+                el.scrollLeft = pos;
+            }
 
-                                                                                                                                                                                                                                                                            frame = requestAnimationFrame(tick);
-                                                                                                                                                                                                                                                                                };
-                                                                                                                                                                                                                                                                                    frame = requestAnimationFrame(tick);
+            frame = requestAnimationFrame(tick);
+        };
+        frame = requestAnimationFrame(tick);
 
-                                                                                                                                                                                                                                                                                        return () => {
-                                                                                                                                                                                                                                                                                              cancelAnimationFrame(frame);
-                                                                                                                                                                                                                                                                                                    el.removeEventListener("touchstart", hold);
-                                                                                                                                                                                                                                                                                                          el.removeEventListener("touchend", release);
-                                                                                                                                                                                                                                                                                                                el.removeEventListener("touchcancel", release);
-                                                                                                                                                                                                                                                                                                                      el.removeEventListener("mouseenter", hold);
-                                                                                                                                                                                                                                                                                                                            el.removeEventListener("mouseleave", release);
-                                                                                                                                                                                                                                                                                                                                };
-                                                                                                                                                                                                                                                                                                                                  }, []);
+        return () => {
+            cancelAnimationFrame(frame);
+            el.removeEventListener("touchstart", hold);
+            el.removeEventListener("touchend", release);
+            el.removeEventListener("touchcancel", release);
+            el.removeEventListener("mouseenter", hold);
+            el.removeEventListener("mouseleave", release);
+        };
+    }, []);
 
-                                                                                                                                                                                                                                                                                                                                    return (
-                                                                                                                                                                                                                                                                                                                                        <div
-                                                                                                                                                                                                                                                                                                                                              ref={ref}
-                                                                                                                                                                                                                                                                                                                                                    className="flex h-full overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-                                                                                                                                                                                                                                                                                                                                                        >
-                                                                                                                                                                                                                                                                                                                                                              {[0, 1, 2].flatMap((copy) =>
-                                                                                                                                                                                                                                                                                                                                                                      games.map((g) => (
-                                                                                                                                                                                                                                                                                                                                                                                <div key={`${copy}-${g.slug}`} className="h-full shrink-0 pr-2">
-                                                                                                                                                                                                                                                                                                                                                                                            <Link
-                                                                                                                                                                                                                                                                                                                                                                                                          href={`/jeux/${g.slug}`}
-                                                                                                                                                                                                                                                                                                                                                                                                                        className="flex h-full w-24 flex-col overflow-hidden rounded-xl border border-border bg-background transition hover:border-accent sm:w-36 lg:w-52"
-                                                                                                                                                                                                                                                                                                                                                                                                                                    >
-                                                                                                                                                                                                                                                                                                                                                                                                                                                  <div className="flex flex-1 items-center justify-center bg-accent/10 text-2xl font-bold text-accent/70">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                  {g.name.charAt(0)}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <p className="truncate px-2 py-1.5 text-xs font-medium">{g.name}</p>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          </Link>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            )),
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  )}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        );
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        }
+    return (
+        <div
+            ref={ref}
+            className="flex h-full overflow-x-auto overscroll-x-contain [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+        >
+            {[0, 1, 2].flatMap((copy) =>
+                games.map((g) => (
+                    <div key={`${copy}-${g.slug}`} className="h-full shrink-0 pr-2">
+                        <Link
+                            href={`/jeux/${g.slug}`}
+                            className="flex h-full w-24 flex-col overflow-hidden rounded-xl border border-border bg-background transition hover:border-accent sm:w-36 lg:w-52"
+                        >
+                            <div className="flex flex-1 items-center justify-center bg-accent/10 text-2xl font-bold text-accent/70">
+                                {g.name.charAt(0)}
+                            </div>
+                            <p className="truncate px-2 py-1.5 text-xs font-medium">{g.name}</p>
+                        </Link>
+                    </div>
+                )),
+            )}
+        </div>
+    );
+}
