@@ -1,44 +1,56 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import FitRow from "@/components/GameRow";
-import GameCardTall from "@/components/GameCardDesign";
-import MoreCard from "@/components/LastCard";
-import { games } from "@/data/games";
-import { addRecent, getRecent } from "@/lib/recent";
+import { games, type Game } from "@/data/games";
+import { getRecent, addRecent } from "@/lib/recent";
 import { pickGames, type Suggestion } from "@/lib/recommend";
+import GameRow from "@/components/GameRow";
+import GameCardDesign from "@/components/GameCardDesign";
+import LastCard from "@/components/LastCard";
 
-const MAX = 12; // nombre maximum de jeux préparés (la rangée en affiche autant qu'il en tient)
+const MAX = 12;
 
-export default function ContinuePlaying() {
-  const [picks, setPicks] = useState<Suggestion[] | null>(null);
+// Valeurs par défaut : la section "Joue maintenant" n'a rien à changer.
+const browserGames = games.filter((g) => g.type === "navigateur");
 
-  useEffect(() => {
-    setPicks(pickGames(games, getRecent(), MAX, Math.random));
-  }, []);
+type Props = {
+  list?: Game[];
+    title?: string;
+      moreHref?: string;
+      };
 
-  // Tant que l'historique n'est pas lu : des rectangles gris qui pulsent
-  const items =
-    picks === null
-      ? Array.from({ length: MAX }, (_, i) => (
-        <div
-          key={i}
-          className="aspect-[3/4] animate-pulse rounded-xl border border-border bg-card"
-        />
-      ))
-      : picks.map((pick) => (
-        <GameCardTall
-          key={pick.game.slug}
-          game={pick.game}
-          badge={pick.reason === "recent" ? "Reprendre" : "À essayer"}
-          onClick={() => addRecent(pick.game.slug)}
-        />
-      ));
+      export default function ContinuePlaying({
+        list = browserGames,
+          title = "Pour toi",
+            moreHref = "/online",
+            }: Props) {
+              const [picks, setPicks] = useState<Suggestion[] | null>(null);
 
-  return (
-    <div className="mt-4">
-      <h3 className="mb-2 text-sm font-semibold text-foreground/60">Pour toi</h3>
-      <FitRow items={items} more={<MoreCard href="/online" />} />
-    </div>
-  );
-}
+                useEffect(() => {
+                    setPicks(pickGames(list, getRecent(), MAX, Math.random));
+                      }, [list]);
+
+                        const items =
+                            picks === null
+                                  ? Array.from({ length: MAX }, (_, i) => (
+                                            <div
+                                                        key={i}
+                                                                    className="aspect-[3/4] animate-pulse rounded-2xl border border-border bg-card"
+                                                                              />
+                                                                                      ))
+                                                                                            : picks.map(({ game, reason }) => (
+                                                                                                      <GameCardDesign
+                                                                                                                  key={game.slug}
+                                                                                                                              game={game}
+                                                                                                                                          badge={reason === "recent" ? "Reprendre" : "À essayer"}
+                                                                                                                                                      onClick={() => addRecent(game.slug)}
+                                                                                                                                                                />
+                                                                                                                                                                        ));
+
+                                                                                                                                                                          return (
+                                                                                                                                                                              <section className="mt-6">
+                                                                                                                                                                                    <h3 className="mb-3 text-lg font-semibold text-foreground">{title}</h3>
+                                                                                                                                                                                          <GameRow items={items} more={<LastCard href={moreHref} />} />
+                                                                                                                                                                                              </section>
+                                                                                                                                                                                                );
+                                                                                                                                                                                                }

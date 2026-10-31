@@ -1,6 +1,8 @@
 import GamesColumn from "@/components/GamesColumn";
-import LastRow from "@/components/LastRow";
+import ContinuePlaying from "@/components/ContinuePlaying";
 import { games } from "@/data/games";
+
+const downloads = games.filter((g) => g.type === "telechargement");
 
 export default function DownloadGamesCard() {
     const downloads = games.filter((g) => g.type === "telechargement");
@@ -22,7 +24,11 @@ export default function DownloadGamesCard() {
             </div>
 
             <div className="mt-3">
-                <LastRow />
+                <ContinuePlaying
+                  list={games.filter((g) => g.type === "telechargement")}
+                    title="Pour toi"
+                      moreHref="/telechargements"
+                      />
             </div>
         </section>
     );
