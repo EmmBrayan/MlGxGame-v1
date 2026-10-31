@@ -48,7 +48,7 @@ export default function Header() {
     return (
         <>
             <header className="sticky top-0 z-30 border-b border-border bg-background/80 backdrop-blur">
-                <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-3 gap-y-3 px-3 py-3 sm:px-4 md:flex-nowrap">
+                <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-x-3 gap-y-3 px-3 py-3 sm:px-4 md:flex-nowrap">
                     <div className="flex items-center gap-2.5">
                         <button
                             type="button"

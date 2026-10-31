@@ -13,7 +13,7 @@ const categories = [
 
 export default function Home() {
   return (
-    <main className="mx-auto max-w-6xl px-4 py-6">
+    <main className="mx-auto max-w-[1600px] px-4 py-6">
       <Link
         href="/a-propos"
         className="group relative block overflow-hidden rounded-3xl border border-border bg-card px-6 py-10 transition hover:border-accent/60 sm:px-10 sm:py-14"
