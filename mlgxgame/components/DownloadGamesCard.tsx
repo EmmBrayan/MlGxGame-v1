@@ -27,7 +27,7 @@ export default function DownloadGamesCard() {
                 <ContinuePlaying
                   list={games.filter((g) => g.type === "telechargement")}
                     title="Pour toi"
-                      moreHref="/telechargements"
+                      moreHref="/downloads"
                       />
             </div>
         </section>
