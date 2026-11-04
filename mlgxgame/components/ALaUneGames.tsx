@@ -29,7 +29,7 @@ export default function ALaUneGames({ game }: { game: Game }) {
                 </div>
 
                 <Link
-                    href={`/jeux/${game.slug}`}
+                    href={`/games/${game.slug}`}
                     className="rounded-lg bg-accent px-3 py-2 text-center text-xs font-semibold text-white transition hover:opacity-90 lg:self-start lg:px-4 lg:text-sm"
                 >
                     <span className="lg:hidden">Voir</span>

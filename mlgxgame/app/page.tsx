@@ -4,9 +4,9 @@ import PlayNow from "@/components/PlayNow";
 import DownloadGamesCard from "@/components/DownloadGamesCard";
 
 const categories = [
-  { label: "Jeux en ligne", href: "/online" },
-  { label: "Jeux PC", href: "/pc" },
-  { label: "Jeux mobile", href: "/mobile" },
+  { label: "games en ligne", href: "/online" },
+  { label: "games PC", href: "/pc" },
+  { label: "games mobile", href: "/mobile" },
   { label: "Templates", href: "/templates" },
   { label: "Boutique", href: "/boutique" },
 ];

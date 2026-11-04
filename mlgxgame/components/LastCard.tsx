@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function MoreCard({
   href,
-  label = "Plus de jeux",
+  label = "Plus de games",
 }: {
   href: string;
   label?: string;

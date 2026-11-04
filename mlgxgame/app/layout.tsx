@@ -2,14 +2,15 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Header from "@/components/Header";
 import "./globals.css";
+import NavBar from "@/components/NavBar";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MLGxGame - Jeux, templates et équipement gaming",
+  title: "MLGxGame - games, templates et équipement gaming",
   description:
-    "Découvre des jeux en ligne, des templates web et une sélection d'équipement pour gamers.",
+    "Découvre des games en ligne, des templates web et une sélection d'équipement pour gamers.",
 };
 
 export default function RootLayout({
@@ -19,6 +20,7 @@ export default function RootLayout({
     <html lang="fr">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Header />
+        <NavBar />
         {children}
       </body>
     </html>

@@ -6,13 +6,13 @@ const MIN_CARD = 104; // largeur minimale d'une carte (en px)
 const GAP = 8; // espace entre les cartes (en px)
 
 type Props = {
-  items: ReactNode[]; // les cartes de jeux
+  items: ReactNode[]; // les cartes de games
   more: ReactNode; // le rectangle "+", toujours en dernier
 };
 
 export default function FitRow({ items, more }: Props) {
   const ref = useRef<HTMLDivElement>(null);
-  const [fit, setFit] = useState(2); // nombre de cartes de jeux qui tiennent
+  const [fit, setFit] = useState(2); // nombre de cartes de games qui tiennent
 
   useEffect(() => {
     const el = ref.current;

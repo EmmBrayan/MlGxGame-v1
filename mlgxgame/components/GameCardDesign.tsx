@@ -17,7 +17,7 @@ export default function GameCardDesign({
 }: Props) {
   return (
     <Link
-      href={`/jeux/${game.slug}`}
+      href={`/games/${game.slug}`}
       onClick={onClick}
       className={`${className} aspect-[3/4] flex-col overflow-hidden rounded-xl border border-border bg-card transition hover:border-accent`}
     >

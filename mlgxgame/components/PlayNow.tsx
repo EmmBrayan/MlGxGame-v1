@@ -16,7 +16,7 @@ function Featured({ game }: { game: Game }) {
                                 <p className="mt-3 text-sm text-foreground/70">{game.description}</p>
                         </div>
                         <Link
-                                href={`/jeux/${game.slug}`}
+                                href={`/games/${game.slug}`}
                                 className="mt-4 rounded-xl bg-accent px-4 py-3 text-center text-sm font-semibold text-white transition hover:opacity-90"
                         >
                                 Jouer maintenant
@@ -42,7 +42,7 @@ export default function PlayNow() {
                                         {tiles.map((g) => (
                                                 <Link
                                                         key={g.slug}
-                                                        href={`/jeux/${g.slug}`}
+                                                        href={`/games/${g.slug}`}
                                                         aria-label={g.name}
                                                         className="flex aspect-square items-center justify-center rounded-xl border border-border bg-card text-lg font-bold text-accent transition hover:border-accent"
                                                 >

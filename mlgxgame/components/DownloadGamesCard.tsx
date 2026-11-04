@@ -19,8 +19,8 @@ export default function DownloadGamesCard() {
             </p>
 
             <div className="mt-4 grid grid-cols-2 items-start gap-3">
-                <GamesColumn title="Jeux PC" list={pcGames} />
-                <GamesColumn title="Jeux Android" list={androidGames} />
+                <GamesColumn title="games PC" list={pcGames} />
+                <GamesColumn title="games Android" list={androidGames} />
             </div>
 
             <div className="mt-3">

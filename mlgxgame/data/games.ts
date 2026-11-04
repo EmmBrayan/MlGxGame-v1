@@ -4,13 +4,13 @@ export type Game = {
     genre: string;
     type: "navigateur" | "telechargement";
     description: string;
-    platforms?: ("pc" | "android")[]; // seulement pour les jeux à télécharger
-    price?: "gratuit" | "payant"; // seulement pour les jeux à télécharger
+    platforms?: ("pc" | "android")[]; // seulement pour les games à télécharger
+    price?: "gratuit" | "payant"; // seulement pour les games à télécharger
     featured?: boolean; // "true" = jeu à la une de sa plateforme
 };
 
 export const games: Game[] = [
-    // --- Jeux dans le navigateur ---
+    // --- games dans le navigateur ---
     { slug: "agar-io", name: "Agar.io", genre: "Arcade", type: "navigateur", description: "Dévore les autres cellules pour grandir sans te faire manger." },
     { slug: "slither-io", name: "Slither.io", genre: "Arcade", type: "navigateur", description: "Guide ton serpent, grandis en mangeant et évite les collisions." },
     { slug: "krunker-io", name: "Krunker.io", genre: "FPS", type: "navigateur", description: "Un jeu de tir rapide à la première personne, dans ton navigateur." },
@@ -20,7 +20,7 @@ export const games: Game[] = [
     { slug: "hextris", name: "Hextris", genre: "Puzzle", type: "navigateur", description: "Un puzzle à la Tetris, sur un hexagone qui tourne." },
     { slug: "little-alchemy-2", name: "Little Alchemy 2", genre: "Réflexion", type: "navigateur", description: "Combine des éléments pour en découvrir de nouveaux." },
 
-    // --- Jeux à télécharger (l'ordre mélange PC et Android sur la rangée du bas) ---
+    // --- games à télécharger (l'ordre mélange PC et Android sur la rangée du bas) ---
     { slug: "valorant", name: "Valorant", genre: "FPS", type: "telechargement", platforms: ["pc"], price: "gratuit", featured: true, description: "Un jeu de tir tactique en équipe, à télécharger sur PC." },
     { slug: "clash-royale", name: "Clash Royale", genre: "Stratégie", type: "telechargement", platforms: ["android"], price: "gratuit", featured: true, description: "Des duels de cartes en temps réel, sur mobile." },
     { slug: "minecraft", name: "Minecraft", genre: "Aventure", type: "telechargement", platforms: ["pc", "android"], price: "payant", description: "Construis, explore et survis dans un monde de blocs." },
