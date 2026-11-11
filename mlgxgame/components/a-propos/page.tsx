@@ -42,7 +42,7 @@ export default function AboutPage() {
       </p>
 
       <h2>Nous contacter</h2>
-      <p>Adresse e-mail : [À COMPLÉTER]</p>
+      <p>Adresse e-mail : emmbrayan145@gmail.com</p>
     </TextPage>
   );
 }
