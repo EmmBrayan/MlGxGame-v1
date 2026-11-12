@@ -9,9 +9,9 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "MLGxGame - games, templates et équipement gaming",
+  title: "MLGxGame - jeux, templates et équipement gaming",
   description:
-    "Découvre des games en ligne, des templates web et une sélection d'équipement pour gamers.",
+    "Découvre des jeux en ligne, des templates web et une sélection d'équipement pour gamers.",
 };
 
 export default function RootLayout({
