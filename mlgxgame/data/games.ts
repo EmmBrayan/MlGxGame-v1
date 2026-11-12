@@ -21,7 +21,6 @@ export const games: Game[] = [
     { slug: "little-alchemy-2", name: "Little Alchemy 2", genre: "Réflexion", type: "navigateur", description: "Combine des éléments pour en découvrir de nouveaux." },
 
     // --- games à télécharger (l'ordre mélange PC et Android sur la rangée du bas) ---
-    { slug: "valorant", name: "Valorant", genre: "FPS", type: "telechargement", platforms: ["pc"], price: "gratuit", featured: true, description: "Un jeu de tir tactique en équipe, à télécharger sur PC." },
     { slug: "clash-royale", name: "Clash Royale", genre: "Stratégie", type: "telechargement", platforms: ["android"], price: "gratuit", featured: true, description: "Des duels de cartes en temps réel, sur mobile." },
     { slug: "minecraft", name: "Minecraft", genre: "Aventure", type: "telechargement", platforms: ["pc", "android"], price: "payant", description: "Construis, explore et survis dans un monde de blocs." },
     { slug: "subway-surfers", name: "Subway Surfers", genre: "Arcade", type: "telechargement", platforms: ["android"], price: "gratuit", description: "Cours, saute et esquive les trains sans t'arrêter." },
