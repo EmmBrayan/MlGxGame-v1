@@ -1,8 +1,8 @@
 import Link from "next/link";
 
-export default function MoreCard({
+export default function LastCard({
   href,
-  label = "Plus de games",
+  label = "Plus de jeux",
 }: {
   href: string;
   label?: string;
