@@ -104,7 +104,7 @@ export default function NavBar() {
                     aria-label="Assistant IA"
                     className="relative z-10 -ml-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-card text-accent shadow-lg shadow-accent/30 ring-4 ring-background transition-transform hover:scale-105 lg:ml-0 lg:-mt-4"
                 >
-                    <Icon paths={aiIcon} className="h-6 w-6" />
+                    <Icon paths={aiIcon} className="h-10 w-10" />
                 </Link>
             </div>
         </div>
