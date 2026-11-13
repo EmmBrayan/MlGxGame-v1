@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Year from "components/Year";
+import Year from "@/components/Year";
 
 const links = [
   { href: "/a-propos", label: "À propos" },
