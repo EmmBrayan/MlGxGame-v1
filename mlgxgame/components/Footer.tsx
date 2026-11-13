@@ -1,6 +1,5 @@
-"use client";
-
 import Link from "next/link";
+import Year from "components/Year";
 
 const links = [
   { href: "/a-propos", label: "À propos" },
@@ -9,7 +8,6 @@ const links = [
 ];
 
 export default function Footer() {
-  const year = new Date().getFullYear();
 
   return (
     <footer className="mt-12 border-t border-border">
@@ -45,7 +43,7 @@ export default function Footer() {
         </div>
 
         <p className="mt-8 border-t border-border pt-6 text-xs leading-relaxed text-foreground/50">
-          © {year} MLGxGame. Non affilié aux éditeurs de jeux : les noms et
+          © <Year /> MLGxGame. Non affilié aux éditeurs de jeux : les noms et
           marques cités appartiennent à leurs propriétaires. Certains liens
           pourront être des liens d&apos;affiliation.
         </p>
