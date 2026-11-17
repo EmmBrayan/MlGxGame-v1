@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   robots: { index: false }, // Google n'indexe pas cette page vide
 };
 
-export default function TemplatesPage() {
+export default function ShopPage() {
   return (
     <ComingSoon
       title="Boutique"
