@@ -102,7 +102,7 @@ export default function NavBar() {
                     href="/agent"
                     title="Assistant IA"
                     aria-label="Assistant IA"
-                    className="relative z-10 -ml-4 flex h-14 w-14 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-card text-accent shadow-lg shadow-accent/30 ring-4 ring-background transition-transform hover:scale-105 lg:ml-0 lg:-mt-4"
+                    className="relative z-10 -ml-4 flex h-18 w-18 shrink-0 items-center justify-center rounded-full border-2 border-accent bg-card text-accent shadow-lg shadow-accent/30 ring-4 ring-background transition-transform hover:scale-105 lg:ml-0 lg:-mt-4"
                 >
                     <Icon paths={aiIcon} className="h-8 w-8" />
                 </Link>
