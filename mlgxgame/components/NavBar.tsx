@@ -175,6 +175,7 @@ export default function NavBar() {
           />
         </button>
       </div>
+    <AssistantPanel open={aiOpen} onClose={() => setAiOpen(false)} />
     </>
   );
 }
