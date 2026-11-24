@@ -154,11 +154,6 @@ export default function NavBar() {
   </span>
   Assistant IA
 </button>
-            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
-              <Icon paths={aiIcon} className="h-5 w-5" />
-            </span>
-            Assistant IA
-          </Link>
         </div>
 
         {/* Le bouton rond, toujours dans le coin */}
