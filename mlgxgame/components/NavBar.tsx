@@ -96,7 +96,7 @@ export default function NavBar() {
           inert={!open}
           className={`flex origin-bottom-right flex-col items-end gap-2 transition duration-200 ${
             open
-              ? "translate-y-0 scale-100 opacity-100"
+              ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
               : "pointer-events-none translate-y-3 scale-95 opacity-0"
           }`}
         >
@@ -159,7 +159,7 @@ export default function NavBar() {
           onClick={() => setOpen((prev) => !prev)}
           aria-expanded={open}
           aria-label={open ? "Fermer la navigation" : "Ouvrir la navigation"}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/40 ring-4 ring-background transition-transform hover:scale-105"
+          className="pointer-events-auto flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/40 ring-4 ring-background transition-transform hover:scale-105"
         >
           <Icon
             paths={open ? ["M6 6l12 12M18 6L6 18"] : ["M4 7h16M4 12h16M4 17h16"]}
