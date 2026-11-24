@@ -11,7 +11,7 @@ const aiIcon = [
   "M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z",
 ];
 
-// Toutes les pages du site, dans l'ordre d'affichage
+// Les pages du menu, dans l'ordre d'affichage
 const items = [
   { href: "/", label: "Accueil", home: true, icon: ["M3 11l9-8 9 8v10a1 1 0 0 1-1 1h-5v-7H9v7H4a1 1 0 0 1-1-1z"] },
   {
@@ -30,9 +30,6 @@ const items = [
   { href: "/connexion", label: "Connexion", icon: ["M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2", "M12 3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"] },
   { href: "/inscription", label: "Inscription", icon: ["M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2", "M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z", "M19 8v6M22 11h-6"] },
   { href: "/discussion", label: "Discussion", icon: ["M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"] },
-  { href: "/a-propos", label: "À propos", icon: ["M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z", "M12 16v-4M12 8h.01"] },
-  { href: "/confidentialite", label: "Confidentialité", icon: ["M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"] },
-  { href: "/conditions", label: "Conditions", icon: ["M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z", "M14 2v6h6", "M8 13h8M8 17h8"] },
 ];
 
 function Icon({ paths, className }: { paths: string[]; className: string }) {
@@ -55,7 +52,7 @@ function Icon({ paths, className }: { paths: string[]; className: string }) {
 
 export default function NavBar() {
   const pathname = usePathname();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false); // la navigation est-elle ouverte ?
   const [aiOpen, setAiOpen] = useState(false); // le panneau IA est-il ouvert ?
   // Faut-il estomper le haut et le bas de la liste ?
   const [fade, setFade] = useState({ top: false, bottom: true });
@@ -110,67 +107,3 @@ export default function NavBar() {
             className="flex max-h-[min(20rem,50vh)] flex-col items-end gap-2 overflow-y-auto overscroll-contain px-1 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {items.map((item) => {
-              const active =
-                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
-
-              const style = item.home
-                ? "border-accent bg-accent text-white"
-                : active
-                  ? "border-accent/50 bg-card text-accent"
-                  : "border-border bg-card/95 text-foreground/80 hover:text-foreground";
-
-              return (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    onClick={() => setOpen(false)}
-                    className={`flex items-center gap-3 rounded-full border py-1.5 pl-1.5 pr-4 text-sm font-medium shadow-lg shadow-black/40 backdrop-blur transition-colors ${style}`}
-                  >
-                    <span
-                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
-                        item.home ? "bg-white/20" : "bg-accent/10"
-                      }`}
-                    >
-                      <Icon paths={item.icon} className="h-5 w-5" />
-                    </span>
-                    {item.label}
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          {/* L'IA reste fixe sous la liste : toujours visible */}
-          <button
-  type="button"
-  onClick={() => {
-    setOpen(false); // on referme la navigation
-    setAiOpen(true); // et on ouvre le panneau IA
-  }}
-  className="mr-1 flex items-center gap-3 rounded-full border border-accent bg-card py-1.5 pl-1.5 pr-4 text-sm font-medium text-accent shadow-lg shadow-accent/30 backdrop-blur"
->
-  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
-    <Icon paths={aiIcon} className="h-5 w-5" />
-  </span>
-  Assistant IA
-</button>
-        </div>
-
-        {/* Le bouton rond, toujours dans le coin */}
-        <button
-          type="button"
-          onClick={() => setOpen((prev) => !prev)}
-          aria-expanded={open}
-          aria-label={open ? "Fermer la navigation" : "Ouvrir la navigation"}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/40 ring-4 ring-background transition-transform hover:scale-105"
-        >
-          <Icon
-            paths={open ? ["M6 6l12 12M18 6L6 18"] : ["M4 7h16M4 12h16M4 17h16"]}
-            className="h-6 w-6"
-          />
-        </button>
-      </div>
-    <AssistantPanel open={aiOpen} onClose={() => setAiOpen(false)} />
-    </>
-  );
-}
