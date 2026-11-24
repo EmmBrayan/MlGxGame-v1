@@ -4,7 +4,7 @@ export type Game = {
     genre: string;
     type: "navigateur" | "telechargement";
     description: string;
-    platforms?: ("pc" | "android")[]; // seulement pour les games à télécharger
+    platforms?: ("pc" | "android" | "ios")[]; // seulement pour les jeux à télécharger
     price?: "gratuit" | "payant"; // seulement pour les games à télécharger
     featured?: boolean; // "true" = jeu à la une de sa plateforme
 };
