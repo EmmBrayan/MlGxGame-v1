@@ -3,12 +3,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState, type UIEvent } from "react";
+import AssistantPanel from "@/components/AssistantPanel";
 
 // Icône "étincelles" pour l'IA
 const aiIcon = [
   "M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z",
   "M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z",
 ];
+const [aiOpen, setAiOpen] = useState(false); // le panneau IA est-il ouvert ?
 
 // Toutes les pages du site, dans l'ordre d'affichage
 const items = [
