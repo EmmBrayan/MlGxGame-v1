@@ -107,3 +107,69 @@ export default function NavBar() {
             className="flex max-h-[min(20rem,50vh)] flex-col items-end gap-2 overflow-y-auto overscroll-contain px-1 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           >
             {items.map((item) => {
+              const active =
+                item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+
+              const style = item.home
+                ? "border-accent bg-accent text-white"
+                : active
+                  ? "border-accent/50 bg-card text-accent"
+                  : "border-border bg-card/95 text-foreground/80 hover:text-foreground";
+
+              return (
+                <li key={item.href}>
+                  <Link
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className={`flex items-center gap-3 rounded-full border py-1.5 pl-1.5 pr-4 text-sm font-medium shadow-lg shadow-black/40 backdrop-blur transition-colors ${style}`}
+                  >
+                    <span
+                      className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full ${
+                        item.home ? "bg-white/20" : "bg-accent/10"
+                      }`}
+                    >
+                      <Icon paths={item.icon} className="h-5 w-5" />
+                    </span>
+                    {item.label}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+
+          {/* L'IA reste fixe sous la liste : toujours visible */}
+          <button
+            type="button"
+            onClick={() => {
+              setOpen(false); // on referme la navigation
+              setAiOpen(true); // et on ouvre le panneau IA
+            }}
+            className="mr-1 flex items-center gap-3 rounded-full border border-accent bg-card py-1.5 pl-1.5 pr-4 text-sm font-medium text-accent shadow-lg shadow-accent/30 backdrop-blur"
+          >
+            <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
+              <Icon paths={aiIcon} className="h-5 w-5" />
+            </span>
+            Assistant IA
+          </button>
+        </div>
+
+        {/* Le bouton rond, toujours dans le coin */}
+        <button
+          type="button"
+          onClick={() => setOpen((prev) => !prev)}
+          aria-expanded={open}
+          aria-label={open ? "Fermer la navigation" : "Ouvrir la navigation"}
+          className="flex h-14 w-14 items-center justify-center rounded-full bg-accent text-white shadow-lg shadow-accent/40 ring-4 ring-background transition-transform hover:scale-105"
+        >
+          <Icon
+            paths={open ? ["M6 6l12 12M18 6L6 18"] : ["M4 7h16M4 12h16M4 17h16"]}
+            className="h-6 w-6"
+          />
+        </button>
+      </div>
+
+      {/* Le panneau de l'assistant IA, au centre de l'écran */}
+      <AssistantPanel open={aiOpen} onClose={() => setAiOpen(false)} />
+    </>
+  );
+}
