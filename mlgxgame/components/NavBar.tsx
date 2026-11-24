@@ -10,7 +10,6 @@ const aiIcon = [
   "M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z",
   "M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z",
 ];
-const [aiOpen, setAiOpen] = useState(false); // le panneau IA est-il ouvert ?
 
 // Toutes les pages du site, dans l'ordre d'affichage
 const items = [
@@ -57,6 +56,7 @@ function Icon({ paths, className }: { paths: string[]; className: string }) {
 export default function NavBar() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [aiOpen, setAiOpen] = useState(false); // le panneau IA est-il ouvert ?
   // Faut-il estomper le haut et le bas de la liste ?
   const [fade, setFade] = useState({ top: false, bottom: true });
 
