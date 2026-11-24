@@ -141,11 +141,19 @@ export default function NavBar() {
           </ul>
 
           {/* L'IA reste fixe sous la liste : toujours visible */}
-          <Link
-            href="/agent"
-            onClick={() => setOpen(false)}
-            className="mr-1 flex items-center gap-3 rounded-full border border-accent bg-card py-1.5 pl-1.5 pr-4 text-sm font-medium text-accent shadow-lg shadow-accent/30 backdrop-blur"
-          >
+          <button
+  type="button"
+  onClick={() => {
+    setOpen(false); // on referme la navigation
+    setAiOpen(true); // et on ouvre le panneau IA
+  }}
+  className="mr-1 flex items-center gap-3 rounded-full border border-accent bg-card py-1.5 pl-1.5 pr-4 text-sm font-medium text-accent shadow-lg shadow-accent/30 backdrop-blur"
+>
+  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
+    <Icon paths={aiIcon} className="h-5 w-5" />
+  </span>
+  Assistant IA
+</button>
             <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-accent/10">
               <Icon paths={aiIcon} className="h-5 w-5" />
             </span>
