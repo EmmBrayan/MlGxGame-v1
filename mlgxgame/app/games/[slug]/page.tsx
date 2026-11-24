@@ -54,7 +54,7 @@ export default async function GamePage({ params }: Props) {
                                 key={p}
                                 className="rounded-full bg-accent/15 px-3 py-1 text-accent"
                             >
-                                {p === "pc" ? "PC" : "Android"}
+                                {p === "pc" ? "PC" : p === "ios" ? "iPhone" : "Android"}
                             </span>
                         ))}
                         {game.price && (
