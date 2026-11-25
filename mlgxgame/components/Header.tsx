@@ -161,7 +161,7 @@ export default function Header() {
           </p>
 
           {links.map((l) =>
-            "children" in l ? (
+            l.children ? (
               <div key={l.label}>
                 <button
                   type="button"
