@@ -21,7 +21,9 @@ export default function RepeatingRows({ items, frames }: Props) {
 
     // Se déclenche au départ, puis à chaque changement de largeur
     const observer = new ResizeObserver(() => {
-      const fit = Math.floor((el.clientWidth + GAP) / (MIN_CARD + GAP));
+            // Grand écran (dès 1024 px de large) : cartes plus grandes
+      const min = window.innerWidth >= 1024 ? MIN_CARD_LARGE : MIN_CARD;
+      const fit = Math.floor((el.clientWidth + GAP) / (min + GAP));
       setColumns(Math.max(2, fit));
     });
     observer.observe(el);
