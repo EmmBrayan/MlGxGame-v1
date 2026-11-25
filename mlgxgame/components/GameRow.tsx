@@ -27,13 +27,15 @@ export default function GameRow({ items, more }: Props) {
     return () => observer.disconnect();
   }, []);
 
-  const visible = Math.min(fit, items.length);
+     const visible = Math.min(fit, items.length);
 
   return (
     <div
       ref={ref}
       className="grid gap-2"
-      style={{ gridTemplateColumns: `repeat(${visible + 1}, minmax(0, 1fr))` }}
+      // Toujours le même nombre de colonnes : les cartes gardent la même taille,
+      // même s'il y a moins de jeux que de place.
+      style={{ gridTemplateColumns: `repeat(${fit + 1}, minmax(0, 1fr))` }}
     >
       {items.slice(0, visible)}
       {more}
