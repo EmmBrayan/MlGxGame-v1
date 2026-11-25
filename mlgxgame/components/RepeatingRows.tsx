@@ -3,8 +3,8 @@
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 const MIN_CARD = 84; // largeur minimale d'une carte sur téléphone (en px)
-const MIN_CARD_LARGE = 130; // largeur minimale sur grand écran (en px)
-const GAP = 8; // espace entre les cartes (en px)
+const MIN_CARD_LARGE = 230; // largeur minimale sur grand écran (en px)
+const GAP = 12; // espace entre les cartes (en px)
 
 type Props = {
   items: ReactNode[]; // les petites cartes de jeux
